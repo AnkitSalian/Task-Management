@@ -33,12 +33,12 @@ export class TasksController {
         return this.tasksService.createTask(createTaskDto);
     }
 
-    // @Patch('/:id/status')
-    // updateTask(
-    //     @Param('id') id: string,
-    //     @Body('status', TaskStatusValidationPipe) status
-    // ): Task {
-    //     return this.tasksService.updateTask(id, status);
-    // }
+    @Patch('/:id/status')
+    updateTask(
+        @Param('id', ParseIntPipe) id: number,
+        @Body('status', TaskStatusValidationPipe) status
+    ): Promise<Task> {
+        return this.tasksService.updateTask(id, status);
+    }
 
 }
